@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USER_USERNAME}
+    password: ${DB_USER_PASSWORD}
+
+# spring doc
+springdoc:
+  packagesToScan: dev.project.webservice.movie
+  pathsToMatch: /**
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

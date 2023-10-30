@@ -1,0 +1,8 @@
+databaseChangeLog :
+  - include :
+      file : db/changelog/v1.0.0_changelog_role-and-people.yml
+  - include :
+      file : db/changelog/v2.0.0_changelog_movie.yml
+  - include :
+      file : db/changelog/v3.0.0-changelog_filling-data-role-and-genre.sql
+
