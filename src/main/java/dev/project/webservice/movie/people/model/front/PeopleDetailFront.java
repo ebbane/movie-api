@@ -2,7 +2,6 @@ package dev.project.webservice.movie.people.model.front;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import dev.project.webservice.movie.movie.model.mb.MovieMb;
 import dev.project.webservice.movie.people.model.mb.RoleMb;
 import java.util.Date;
 import java.util.List;
@@ -17,9 +16,9 @@ public class PeopleDetailFront {
   private String nationality;
   private List<RoleMb> roles;
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
-  private List<MovieMb> actorMovie;
+  private List<PeopleMovieFront> actorMovie;
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
-  private List<MovieMb> directorMovie;
+  private List<PeopleMovieFront> directorMovie;
 
   public Long getId() {
     return id;
@@ -69,20 +68,20 @@ public class PeopleDetailFront {
     this.roles = roles;
   }
 
-  public List<MovieMb> getActorMovie() {
+  public List<PeopleMovieFront> getActorMovie() {
     return actorMovie;
   }
 
-  public void setActorMovie(List<MovieMb> actorMovie) {
+  public void setActorMovie(List<PeopleMovieFront> actorMovie) {
     this.actorMovie = actorMovie;
   }
 
-  public List<MovieMb> getDirectorMovie() {
+  public List<PeopleMovieFront> getDirectorMovie() {
     return directorMovie;
   }
 
   public void setDirectorMovie(
-      List<MovieMb> directorMovie) {
+      List<PeopleMovieFront> directorMovie) {
     this.directorMovie = directorMovie;
   }
 }

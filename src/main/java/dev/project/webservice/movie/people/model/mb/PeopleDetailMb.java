@@ -1,18 +1,18 @@
 package dev.project.webservice.movie.people.model.mb;
 
-import dev.project.webservice.movie.movie.model.mb.MovieMb;
 import java.util.Date;
 import java.util.List;
 
 public class PeopleDetailMb {
+
   private Long id;
   private String firstname;
   private String lastname;
   private Date birthday;
   private String nationality;
   private List<RoleMb> roles;
-  private List<MovieMb> actorMovie;
-  private List<MovieMb> directorMovie;
+  private List<PeopleMovieMb> actorMovie;
+  private List<PeopleMovieMb> directorMovie;
 
   public Long getId() {
     return id;
@@ -62,20 +62,20 @@ public class PeopleDetailMb {
     this.roles = roles;
   }
 
-  public List<MovieMb> getActorMovie() {
+  public List<PeopleMovieMb> getActorMovie() {
     return actorMovie;
   }
 
-  public void setActorMovie(List<MovieMb> actorMovie) {
+  public void setActorMovie(List<PeopleMovieMb> actorMovie) {
     this.actorMovie = actorMovie;
   }
 
-  public List<MovieMb> getDirectorMovie() {
+  public List<PeopleMovieMb> getDirectorMovie() {
     return directorMovie;
   }
 
   public void setDirectorMovie(
-      List<MovieMb> directorMovie) {
+      List<PeopleMovieMb> directorMovie) {
     this.directorMovie = directorMovie;
   }
 }

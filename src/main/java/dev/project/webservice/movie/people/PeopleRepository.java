@@ -2,6 +2,7 @@ package dev.project.webservice.movie.people;
 
 import dev.project.webservice.movie.people.model.mb.PeopleDetailMb;
 import dev.project.webservice.movie.people.model.mb.PeopleMb;
+import dev.project.webservice.movie.people.model.mb.PeopleMovieMb;
 import dev.project.webservice.movie.people.model.mb.RoleMb;
 import java.util.List;
 import java.util.Optional;
@@ -67,7 +68,7 @@ public interface PeopleRepository {
   )
   @Results(value = {
       @Result(property = "id", column = "id"),
-      @Result(property = "roles", column = "id", many = @Many(select = "selectRolesByPeople"))
+      @Result(property = "roles", column = "id", many = @Many(select = "selectRolesByPeople")),
   })
   List<PeopleMb> getPeoplesByRole(String role, int offset, int pageSize);
 
@@ -91,9 +92,33 @@ public interface PeopleRepository {
   )
   @Results(value = {
       @Result(property = "id", column = "id"),
-      @Result(property = "roles", column = "id", many = @Many(select = "selectRolesByPeople"))
+      @Result(property = "roles", column = "id", many = @Many(select = "selectRolesByPeople")),
+      @Result(property = "directorMovie", column = "id", many = @Many(select = "selectDirectorMovies")),
+      @Result(property = "actorMovie", column = "id", many = @Many(select = "selectActorMovies")),
   })
   Optional<PeopleDetailMb> getPeopleById(Long id);
+
+
+  @Select(
+      """
+          SELECT id, name, description, publication_date
+          FROM movie_director md
+          JOIN movie ON md.movie_id = id
+          WHERE md.people_id = #{directorId}
+          """
+  )
+  List<PeopleMovieMb> selectDirectorMovies(Long directorId);
+
+  @Select(
+      """
+          SELECT id, name, description, publication_date
+          FROM movie_actor ma
+          JOIN movie ON ma.movie_id = id
+          WHERE ma.people_id = #{actorId}
+          """
+  )
+  List<PeopleMovieMb> selectActorMovies(Long actorId);
+
 
   @Delete(
       """
