@@ -41,18 +41,56 @@ public class PeopleController {
     this.peopleService = peopleService;
   }
 
+  @Operation(summary = "List des rôles de l'application")
+  @ApiResponses(value = {
+      @ApiResponse(
+          responseCode = "200",
+          description = "Succès",
+          content = {
+              @Content(mediaType = "application/json",
+                  schema = @Schema(implementation = RoleFront.class))}),
+  })
   @GetMapping("role")
   public List<RoleFront> getRoles() {
     return peopleService.getRoles();
   }
 
+  @Operation(summary = "Création d'une personne")
+  @ApiResponses(value = {
+      @ApiResponse(
+          responseCode = "201",
+          description = "Succès",
+          content = {
+              @Content(mediaType = "application/json",
+                  schema = @Schema(implementation = Long.class))}),
+      @ApiResponse(
+          responseCode = "400",
+          description = "Non respect des champs",
+          content = {
+              @Content(mediaType = "application/json")})
+  })
   @PostMapping
   public ResponseEntity<Long> createPeople(@RequestBody @Valid PeopleFront peopleFront) {
     return ResponseEntity.ok()
         .body(peopleService.createPeople(peopleFront));
   }
 
-
+  @Operation(summary = "Mis à jour d'une personne")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Succès"),
+      @ApiResponse(
+          responseCode = "404",
+          description = "Le film l'id spécifié n'existe pas"
+      ),
+      @ApiResponse(
+          responseCode = "400",
+          description = "L'id spécifié n'a pas un format valide"
+      ),
+      @ApiResponse(
+          responseCode = "204",
+          description = "Succès"
+      )
+  })
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void updatePeople(

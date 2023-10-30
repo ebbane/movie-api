@@ -39,18 +39,58 @@ public class MovieController {
     this.movieService = movieService;
   }
 
+  @Operation(summary = "List des genres de film")
+  @ApiResponses(value = {
+      @ApiResponse(
+          responseCode = "200",
+          description = "Succès",
+          content = {
+              @Content(mediaType = "application/json",
+                  schema = @Schema(implementation = MovieFront.class))}),
+  })
   @GetMapping("genre")
-  public List<GenreFront> getRoles() {
+  public List<GenreFront> getGenres() {
     return movieService.getGenres();
   }
 
+
+  @Operation(summary = "Création d'un film")
+  @ApiResponses(value = {
+      @ApiResponse(
+          responseCode = "201",
+          description = "Succès",
+          content = {
+              @Content(mediaType = "application/json",
+                  schema = @Schema(implementation = Long.class))}),
+      @ApiResponse(
+          responseCode = "400",
+          description = "Non respect des champs",
+          content = {
+              @Content(mediaType = "application/json")})
+  })
   @PostMapping
-  public ResponseEntity<Long> createMovie(@RequestBody @Valid MovieFront movieFront) {
+  public ResponseEntity<Long> createMovie(
+      @RequestBody(required = true) @Valid MovieFront movieFront) {
     return ResponseEntity.ok()
         .body(movieService.createMovie(movieFront));
   }
 
-
+  @Operation(summary = "Mise à jour d'un film")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Succès"),
+      @ApiResponse(
+          responseCode = "404",
+          description = "Le film l'id spécifié n'existe pas"
+      ),
+      @ApiResponse(
+          responseCode = "400",
+          description = "L'id spécifié n'a pas un format valide"
+      ),
+      @ApiResponse(
+          responseCode = "204",
+          description = "Succès"
+      )
+  })
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void updateMovie(
