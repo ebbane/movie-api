@@ -19,7 +19,6 @@
 		<java.version>17</java.version>
 		<mybatis-spring-boot-starter.version>3.0.2</mybatis-spring-boot-starter.version>
 		<mapstruct.version>1.5.5.Final</mapstruct.version>
-		<validation-api.version>2.0.1.Final</validation-api.version>
 		<spring-data-commons.version>3.1.5</spring-data-commons.version>
 		<swagger-annotations.version>2.2.18</swagger-annotations.version>
 		<jackson-databind.version>2.15.3</jackson-databind.version>
@@ -48,9 +47,8 @@
 			<version>${mapstruct.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${validation-api.version}</version>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
