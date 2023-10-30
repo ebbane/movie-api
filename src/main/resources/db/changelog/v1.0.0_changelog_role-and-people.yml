@@ -1,0 +1,72 @@
+databaseChangeLog:
+  - changeSet:
+      id: init-table-people
+      author: ediet
+      changes:
+        - createTable:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: TEXT
+              - column:
+                  name: description
+                  type: TEXT
+        - createTable:
+            tableName: people
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastname
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birthday
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: nationality
+                  type: TEXT
+        - createTable:
+            tableName: people_role
+            columns:
+              - column:
+                  name: people_id
+                  type: BIGINT
+              - column:
+                  name: role_id
+                  type: BIGINT
+        - addForeignKeyConstraint:
+            baseColumnNames: people_id
+            baseTableName: people_role
+            constraintName: fk_people_role_people_id
+            onDelete: cascade
+            referencedColumnNames: id
+            referencedTableName: people
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: people_role
+            constraintName: fk_people_role_role_id
+            onDelete: cascade
+            referencedColumnNames: id
+            referencedTableName: role

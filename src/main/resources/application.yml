@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/movie
+    username: movie
+    password: movie
+
+# spring doc
+springdoc:
+  packagesToScan: dev.project.webservice.movie
+  pathsToMatch: /**
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

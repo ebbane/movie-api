@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "193511b4-1d59-4990-804b-c7154a505831",
+		"name": "Webservice ReST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25856997"
+	},
+	"item": [
+		{
+			"name": "people",
+			"item": [
+				{
+					"name": "Roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{back_url}}/people/role",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"people",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "peoples by role",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{back_url}}/people?role=actor",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"people"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "actor"
+								},
+								{
+									"key": "pageSize",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "people by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{back_url}}/people/:id",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"people",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "people by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{back_url}}/people/:id",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"people",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "People",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Tom\",\r\n    \"lastname\": \"Hardy\",\r\n    \"birthday\": \"1997-09-15\",\r\n    \"nationality\": \"britannique\",\r\n    \"roles\": [\r\n         {\r\n            \"id\": \"1\",\r\n            \"name\": \"ACTOR\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{back_url}}/people",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "People",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"firstname\": \"Tom\",\r\n    \"lastname\": \"Hardy\",\r\n    \"birthday\": \"1997-09-16\",\r\n    \"nationality\": \"britannique\",\r\n    \"roles\": [\r\n         {\r\n            \"id\": \"1\",\r\n            \"name\": \"ACTOR\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{back_url}}/people/:id",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"people",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movie",
+			"item": [
+				{
+					"name": "Genres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{back_url}}/movie/genre",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"movie",
+								"genre"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{back_url}}/movie",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"movie"
+							],
+							"query": [
+								{
+									"key": "actors",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "directors",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{back_url}}/movie/:id",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"movie",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Berserk: The Golden Age Arc 3 - Descent\",\r\n    \"description\": \"Un an après son départ, Guts rejoint la bande de Hawk, qui a pris la fuite, afin de les aider à retrouver et sauver Griffith\",\r\n    \"publicationDate\": \"2013-02-01\",\r\n    \"duration\": \"1h50\",\r\n    \"distributor\": \"Netflix\",\r\n    \"genres\": [\r\n        {\r\n            \"id\": 13,\r\n            \"name\": \"Fantasy\"\r\n        },\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"Action\"\r\n        },\r\n        {       \r\n            \"id\": 1,\r\n            \"name\": \"Animated\"\r\n        }\r\n    ],\r\n    \"actors\": [\r\n        {\r\n            \"id\": 1,\r\n            \"firstname\": \"Takahiro\",\r\n            \"lastname\": \"Sakurai\",\r\n            \"birthday\": \"1974-06-13\"\r\n        }\r\n    ],\r\n    \"directors\": [\r\n        {\r\n            \"id\": 2,\r\n            \"firstname\": \"Kubooka\",\r\n            \"lastname\": \"Toshiyuki\",\r\n            \"birthday\": \"1963-12-19\"\r\n        }\r\n    ]\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{back_url}}/movie",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"movie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Berserk: The Golden Age Arc 3 - Descent\",\r\n    \"description\": \"Il s'est passé un an depuis que Guts a quitté la Troupe du Faucon et que Griffith a été emprisonné par le Royaume de Midland pour trahison.Toujours en cavale, et cachée dans un campement, la Troupe du Faucon, menée par Casca, est déterminée à libérer Griffith. C'est là, qu'en pleine nuit, ils sont attaqués par les assassins Bakiraka et leur chef Silat. Alors que tout semble perdu, Guts revient de son voyage et les sauve. Ils joignent leurs forces restantes pour secourir leur ancien leader.\",\r\n    \"publicationDate\": \"2013-02-01\",\r\n    \"duration\": \"1h50\",\r\n    \"distributor\": \"Netflix\",\r\n    \"genres\": [\r\n        {\r\n            \"id\": 13,\r\n            \"name\": \"Fantasy\"\r\n        },\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"Action\"\r\n        },\r\n        {       \r\n            \"id\": 1,\r\n            \"name\": \"Animated\"\r\n        }\r\n    ],\r\n    \"actors\": [\r\n        {\r\n            \"id\": 1,\r\n            \"firstname\": \"Takahiro\",\r\n            \"lastname\": \"Sakurai\",\r\n            \"birthday\": \"1974-06-13\"\r\n        }\r\n    ],\r\n    \"directors\": [\r\n        {\r\n            \"id\": 2,\r\n            \"firstname\": \"Kubooka\",\r\n            \"lastname\": \"Toshiyuki\",\r\n            \"birthday\": \"1963-12-19\"\r\n        }\r\n    ]\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{back_url}}/movie/:id",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"movie",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{back_url}}/movie/:id",
+							"host": [
+								"{{back_url}}"
+							],
+							"path": [
+								"movie",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "back_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

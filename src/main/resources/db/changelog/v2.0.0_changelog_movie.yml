@@ -1,0 +1,122 @@
+databaseChangeLog:
+  - changeSet:
+      id: init-table-movie
+      author: ediet
+      changes:
+        - createTable:
+            tableName: genre
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: TEXT
+        - createTable:
+            tableName: movie
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(2048)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: publication_date
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: duration
+                  type: TEXT
+              - column:
+                  name: distributor
+                  type: TEXT
+        - createTable:
+            tableName: movie_genre
+            columns:
+              - column:
+                  name: movie_id
+                  type: BIGINT
+              - column:
+                  name: genre_id
+                  type: BIGINT
+        - addForeignKeyConstraint:
+            baseColumnNames: movie_id
+            baseTableName: movie_genre
+            constraintName: fk_movie_genre_movie_id
+            onDelete: cascade
+            referencedColumnNames: id
+            referencedTableName: movie
+        - addForeignKeyConstraint:
+            baseColumnNames: genre_id
+            baseTableName: movie_genre
+            constraintName: fk_movie_genre_genre_id
+            onDelete: cascade
+            referencedColumnNames: id
+            referencedTableName: genre
+  - changeSet:
+      id: manage-people-movie
+      author: ediet
+      changes:
+        - createTable:
+            tableName: movie_actor
+            columns:
+              - column:
+                  name: movie_id
+                  type: BIGINT
+              - column:
+                  name: people_id
+                  type: BIGINT
+        - addForeignKeyConstraint:
+            baseColumnNames: movie_id
+            baseTableName: movie_actor
+            constraintName: fk_movie_actor_movie_id
+            onDelete: cascade
+            referencedColumnNames: id
+            referencedTableName: movie
+        - addForeignKeyConstraint:
+            baseColumnNames: people_id
+            baseTableName: movie_actor
+            constraintName: fk_movie_actor_people_id
+            onDelete: cascade
+            referencedColumnNames: id
+            referencedTableName: people
+        - createTable:
+            tableName: movie_director
+            columns:
+              - column:
+                  name: movie_id
+                  type: BIGINT
+              - column:
+                  name: people_id
+                  type: BIGINT
+        - addForeignKeyConstraint:
+            baseColumnNames: movie_id
+            baseTableName: movie_director
+            constraintName: fk_movie_director_movie_id
+            onDelete: cascade
+            referencedColumnNames: id
+            referencedTableName: movie
+        - addForeignKeyConstraint:
+            baseColumnNames: people_id
+            baseTableName: movie_actor
+            constraintName: fk_movie_director_people_id
+            onDelete: cascade
+            referencedColumnNames: id
+            referencedTableName: people
